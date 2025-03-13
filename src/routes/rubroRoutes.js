@@ -10,7 +10,7 @@ const{
 
 } = require('../controllers/rubroControllers');
 
-const router = express.router;
+const router = express.router();
 
 router.get('/', getRubros);
 

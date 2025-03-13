@@ -1,5 +1,4 @@
 const Colaborador = require('../models/Colaborador');
-const Colaborador = require('../models/Colaborador');
 
 exports.getColaborades = async (req, res) => {
     try{

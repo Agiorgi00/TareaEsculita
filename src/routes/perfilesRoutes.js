@@ -10,7 +10,7 @@ const{
 
 } = require('../controllers/perfilesController');
 
-const router = express.router;
+const router = express.router();
 
 router.get('/', getPerfiles);
 

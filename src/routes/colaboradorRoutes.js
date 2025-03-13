@@ -1,4 +1,4 @@
-const express = require('express');
+const express = ('express');
 const { body, param } = require('express-validator');
 
 const{
@@ -9,7 +9,7 @@ const{
     eliminarColaborador
 } = require('../controllers/colaboradorController');
 
-const router = express.router;
+const router = express.router();
 
 router.get('/', getColaboradores);
 

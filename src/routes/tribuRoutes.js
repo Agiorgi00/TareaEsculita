@@ -10,7 +10,7 @@ const{
 
 } = require('../controllers/tribuControllers');
 
-const router = express.router;
+const router = express.router();
 
 router.get('/', getTribus);
 
