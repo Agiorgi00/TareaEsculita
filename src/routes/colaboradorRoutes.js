@@ -1,15 +1,14 @@
 const express = require('express');
 const { body, param } = require('express-validator');
-
-const{
+const {
     getColaboradores,
     getColaboradorById,
     createColaborador,
     updateColaborador,
-    eliminarColaborador
+    deleteColaborador
 } = require('../controllers/colaboradorController');
 
-const router = express.router();
+const router = express.Router();
 
 router.get('/', getColaboradores);
 
@@ -34,10 +33,7 @@ router.put('/:id',
 
 router.delete('/:id',
     param('id').isMongoId().withMessage('ID inválido'),
-    eliminarColaborador
+    deleteColaborador
 );
 
-
 module.exports = router;
-
-//error

@@ -1,38 +1,36 @@
 const express = require('express');
 const { body, param } = require('express-validator');
+const {
+    getClientes,
+    getClienteById,
+    createCliente,
+    updateCliente,
+    deleteCliente
+} = require('../controllers/clienteController');
 
-const{
-    getPerfiles,
-    getPerfilById,
-    createPerfil,
-    deletePerfil,
-    upadtePerfil
+const router = express.Router();
 
-} = require('../controllers/perfilesController');
-
-const router = express.router();
-
-router.get('/', getPerfiles);
+router.get('/', getClientes);
 
 router.get('/:id',
     param('id').isMongoId().withMessage('ID inválido'),
-    getPerfilById
+    getClienteById
 );
 
 router.post('/',
     body('nombre').notEmpty().withMessage('El nombre es obligatorio'),
-    createPerfil
+    createCliente
 );
 
 router.put('/:id',
     param('id').isMongoId().withMessage('ID inválido'),
     body('nombre').optional().notEmpty().withMessage('El nombre no puede estar vacío'),
-    upadtePerfil
+    updateCliente
 );
 
 router.delete('/:id',
     param('id').isMongoId().withMessage('ID inválido'),
-    deletePerfil
+    deleteCliente
 );
 
 module.exports = router;

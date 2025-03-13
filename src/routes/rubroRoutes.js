@@ -1,22 +1,20 @@
 const express = require('express');
 const { body, param } = require('express-validator');
-
-const{
-    getRubro,
+const {
     getRubros,
+    getRubroById,
     createRubro,
-    deleteRubro,
-    updateRubro
+    updateRubro,
+    deleteRubro
+} = require('../controllers/rubroController');
 
-} = require('../controllers/rubroControllers');
-
-const router = express.router();
+const router = express.Router();
 
 router.get('/', getRubros);
 
 router.get('/:id',
     param('id').isMongoId().withMessage('ID inválido'),
-    getRubro
+    getRubroById
 );
 
 router.post('/',

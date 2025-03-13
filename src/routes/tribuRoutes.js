@@ -1,22 +1,20 @@
 const express = require('express');
 const { body, param } = require('express-validator');
-
-const{
-    getTribu,
+const {
+    getTribus,
+    getTribuById,
     createTribu,
     updateTribu,
-    deleteTribu,
-    getTribus
+    deleteTribu
+} = require('../controllers/tribuController');
 
-} = require('../controllers/tribuControllers');
-
-const router = express.router();
+const router = express.Router();
 
 router.get('/', getTribus);
 
 router.get('/:id',
     param('id').isMongoId().withMessage('ID inválido'),
-    getTribu
+    getTribuById
 );
 
 router.post('/',

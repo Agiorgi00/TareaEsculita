@@ -1,22 +1,20 @@
 const express = require('express');
 const { body, param } = require('express-validator');
-
-const{
-    getProyecto,
+const {
+    getProyectos,
+    getProyectoById,
     createProyecto,
-    deleteProyecto,
     updateProyecto,
-    getProyectos
+    deleteProyecto
+} = require('../controllers/proyectoController');
 
-} = require('../controllers/proyectoControllers');
-
-const router = express.router();
+const router = express.Router();
 
 router.get('/', getProyectos);
 
 router.get('/:id',
     param('id').isMongoId().withMessage('ID inválido'),
-    getProyecto
+    getProyectoById
 );
 
 router.post('/',
@@ -36,5 +34,8 @@ router.delete('/:id',
     param('id').isMongoId().withMessage('ID inválido'),
     deleteProyecto
 );
+
+module.exports = router;
+
 
 module.exports = router;
