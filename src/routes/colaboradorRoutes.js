@@ -12,8 +12,8 @@ const router = express.router;
 
 router.get('/', getColaboradores);
 router.get('/:id', getColaboradorById);
-router.get('/', createColaborador);
-router.get('/:id', updateColaborador);
-router.get('/:id', eliminarColaborador);
+router.post('/', createColaborador);
+router.put('/:id', updateColaborador);
+router.delete('/:id', eliminarColaborador);
 
 module.exports = router;

@@ -9,7 +9,7 @@ exports.getTribu = async (req, res) => {
     };
 };
 
-exports.getTribu = async (req, res) => {
+exports.getTribus = async (req, res) => {
     try{
         const tribu = await tribu.findById().populate();
         if(!tribu)res.status(400).json({message:'no se pudo crear la tribu'});
