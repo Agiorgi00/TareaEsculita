@@ -1,4 +1,5 @@
 const express = require('express');
+const { body, param } = require('express-validator');
 
 const{
     getColaboradores,
@@ -11,9 +12,30 @@ const{
 const router = express.router;
 
 router.get('/', getColaboradores);
-router.get('/:id', getColaboradorById);
-router.post('/', createColaborador);
-router.put('/:id', updateColaborador);
-router.delete('/:id', eliminarColaborador);
+
+router.get('/:id',
+    param('id').isMongoId().withMessage('ID inválido'),
+    getColaboradorById
+);
+
+router.post('/',
+    body('nombre').notEmpty().withMessage('El nombre es obligatorio'),
+    body('email').isEmail().withMessage('Debe ser un email válido'),
+    body('perfil').isMongoId().withMessage('Perfil inválido'),
+    createColaborador
+);
+
+router.put('/:id',
+    param('id').isMongoId().withMessage('ID inválido'),
+    body('nombre').optional().notEmpty().withMessage('El nombre no puede estar vacío'),
+    body('email').optional().isEmail().withMessage('Debe ser un email válido'),
+    updateColaborador
+);
+
+router.delete('/:id',
+    param('id').isMongoId().withMessage('ID inválido'),
+    eliminarColaborador
+);
+
 
 module.exports = router;

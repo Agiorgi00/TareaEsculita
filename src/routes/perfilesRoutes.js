@@ -1,6 +1,6 @@
 const express = ('express');
+const { body, param } = require('express-validator');
 
-const { updateColaborador } = require('../controllers/colaboradorController');
 const{
     getPerfiles,
     getPerfilById,
@@ -13,9 +13,26 @@ const{
 const router = express.router;
 
 router.get('/', getPerfiles);
-router.get('/:id', getPerfilById);
-router.post('/', createPerfil);
-router.delete('/:id', deletePerfil);
-router.put('/:id', upadtePerfil);
+
+router.get('/:id',
+    param('id').isMongoId().withMessage('ID inválido'),
+    getPerfilById
+);
+
+router.post('/',
+    body('nombre').notEmpty().withMessage('El nombre es obligatorio'),
+    createPerfil
+);
+
+router.put('/:id',
+    param('id').isMongoId().withMessage('ID inválido'),
+    body('nombre').optional().notEmpty().withMessage('El nombre no puede estar vacío'),
+    upadtePerfil
+);
+
+router.delete('/:id',
+    param('id').isMongoId().withMessage('ID inválido'),
+    deletePerfil
+);
 
 module.exports = router;
