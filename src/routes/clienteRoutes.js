@@ -11,27 +11,27 @@ const {
 
 const router = express.Router();
 
-router.get('/', getClientes);
+router.get('/', auth, getClientes);
 
 router.get('/:id',
-    param('id').isMongoId().withMessage('ID inválido'),
+    param('id').isMongoId().withMessage('ID inválido'), auth,
     getClienteById
 );
 
 router.post('/',
     body('nombre').notEmpty().withMessage('El nombre es obligatorio'),
-    createCliente
+    auth ,createCliente
 );
 
 router.put('/:id',
     param('id').isMongoId().withMessage('ID inválido'),
     body('nombre').optional().notEmpty().withMessage('El nombre no puede estar vacío'),
-    updateCliente
+    auth, updateCliente
 );
 
 router.delete('/:id',
     param('id').isMongoId().withMessage('ID inválido'),
-    deleteCliente
+    auth ,deleteCliente
 );
 
 module.exports = router;

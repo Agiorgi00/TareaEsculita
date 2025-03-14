@@ -11,30 +11,30 @@ const {
 
 const router = express.Router();
 
-router.get('/', getColaboradores);
+router.get('/', auth , getColaboradores);
 
 router.get('/:id',
     param('id').isMongoId().withMessage('ID inválido'),
-    getColaboradorById
+    auth, getColaboradorById
 );
 
 router.post('/',
     body('nombre').notEmpty().withMessage('El nombre es obligatorio'),
     body('email').isEmail().withMessage('Debe ser un email válido'),
     body('perfil').isMongoId().withMessage('Perfil inválido'),
-    createColaborador
+    auth, createColaborador
 );
 
 router.put('/:id',
     param('id').isMongoId().withMessage('ID inválido'),
     body('nombre').optional().notEmpty().withMessage('El nombre no puede estar vacío'),
     body('email').optional().isEmail().withMessage('Debe ser un email válido'),
-    updateColaborador
+    auth, updateColaborador
 );
 
 router.delete('/:id',
     param('id').isMongoId().withMessage('ID inválido'),
-    deleteColaborador
+    auth, deleteColaborador
 );
 
 module.exports = router;

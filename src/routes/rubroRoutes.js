@@ -15,23 +15,23 @@ router.get('/', getRubros);
 
 router.get('/:id',
     param('id').isMongoId().withMessage('ID inválido'),
-    getRubroById
+    auth, getRubroById
 );
 
 router.post('/',
     body('nombre').notEmpty().withMessage('El nombre es obligatorio'),
-    createRubro
+    auth, createRubro
 );
 
 router.put('/:id',
     param('id').isMongoId().withMessage('ID inválido'),
     body('nombre').optional().notEmpty().withMessage('El nombre no puede estar vacío'),
-    updateRubro
+    auth, updateRubro
 );
 
 router.delete('/:id',
     param('id').isMongoId().withMessage('ID inválido'),
-    deleteRubro
+    auth, deleteRubro
 );
 
 module.exports = router;

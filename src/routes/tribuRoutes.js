@@ -11,27 +11,27 @@ const {
 
 const router = express.Router();
 
-router.get('/', getTribus);
+router.get('/', auth, getTribus);
 
 router.get('/:id',
     param('id').isMongoId().withMessage('ID inválido'),
-    getTribuById
+    auth, getTribuById
 );
 
 router.post('/',
     body('nombre').notEmpty().withMessage('El nombre es obligatorio'),
-    createTribu
+    auth, createTribu
 );
 
 router.put('/:id',
     param('id').isMongoId().withMessage('ID inválido'),
     body('nombre').optional().notEmpty().withMessage('El nombre no puede estar vacío'),
-    updateTribu
+    auth, updateTribu
 );
 
 router.delete('/:id',
     param('id').isMongoId().withMessage('ID inválido'),
-    deleteTribu
+    auth, deleteTribu
 );
 
 module.exports = router;

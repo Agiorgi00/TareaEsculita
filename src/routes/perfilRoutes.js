@@ -11,27 +11,27 @@ const {
 
 const router = express.Router();
 
-router.get('/', getPerfiles);
+router.get('/', auth, getPerfiles);
 
 router.get('/:id',
     param('id').isMongoId().withMessage('ID inválido'),
-    getPerfilById
+    auth, getPerfilById
 );
 
 router.post('/',
     body('nombre').notEmpty().withMessage('El nombre es obligatorio'),
-    createPerfil
+    auth, createPerfil
 );
 
 router.put('/:id',
     param('id').isMongoId().withMessage('ID inválido'),
     body('nombre').optional().notEmpty().withMessage('El nombre no puede estar vacío'),
-    updatePerfil
+    auth, updatePerfil
 );
 
 router.delete('/:id',
     param('id').isMongoId().withMessage('ID inválido'),
-    deletePerfil
+    auth, deletePerfil
 );
 
 module.exports = router;
