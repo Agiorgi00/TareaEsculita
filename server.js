@@ -17,6 +17,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+app.use('/api/auth', require('./src/routes/authRoutes')); // 📌 Revisar si esta línea es el problema
 app.use('/api/colaboradores', require('./src/routes/colaboradorRoutes'));
 app.use('/api/clientes', require('./src/routes/clienteRoutes'));
 app.use('/api/perfiles', require('./src/routes/perfilRoutes'));
