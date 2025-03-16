@@ -5,10 +5,13 @@ const inicio = () => {
     return(
         <div className="inicio-Container">
             <div className="inicio-box">
-                <input type="button" />
-                <input type="button" />
-                <input type="button" />
+                <button>Colaboradores</button>
+                <button>Clientes</button>
+                <button>Proyecto</button>
+                <button>Tribus</button>
             </div>
         </div>
     );
 };
+
+export default inicio;
