@@ -9,6 +9,7 @@ const inicio = () => {
                 <button>Clientes</button>
                 <button>Proyecto</button>
                 <button>Tribus</button>
+                <button>Perfil</button>
             </div>
         </div>
     );

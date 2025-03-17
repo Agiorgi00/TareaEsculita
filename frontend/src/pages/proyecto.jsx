@@ -1,12 +1,12 @@
 import React from "react";
 import ('../styles/global.css');
 
-const colaboradores = () => {
+const Proyectos = () => {
     return(
-    <div className="colaborador-Container">
+        <div className="colaborador-Container">
         <div className="colaborador-Box">
             <form className="form-Colaboradores">
-                <input type="text" className="input-Colaboradores" placeholder="Ingrese el colaborador" />
+                <input type="text" className="input-Colaboradores" placeholder="Ingrese el Proyecto" />
                 <button type="submit">Buscar</button>
             </form>
             <div className="tabla-Container">
@@ -15,10 +15,7 @@ const colaboradores = () => {
                         <tr>
                             <th>Id</th>
                             <th>Nombre</th>
-                            <th>Email</th>
-                            <th>Perfil</th>
                             <th>Cliente</th>
-                            <th>Proyecto</th>
                             <th>Tribu</th>
                             <th>Opciones</th>
                         </tr>
@@ -26,11 +23,8 @@ const colaboradores = () => {
                         <tbody>
                             <tr>
                             <td>1</td>
-                            <td>Juan Pérez</td>
-                            <td>juan@example.com</td>
-                            <td>Desarrollador</td>
-                            <td>Movistar</td>
-                            <td>Escuelita</td>
+                            <td>Desarrollo</td>
+                            <td>Urbano</td>
                             <td>Mati</td>
                             <td>
                                 <button className="editar">Editar</button>
@@ -42,7 +36,7 @@ const colaboradores = () => {
             </div>
         </div>
     </div>
-    )
+    );
 };
 
-export default colaboradores;
+export default Proyectos;
